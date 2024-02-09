@@ -1,8 +1,8 @@
 namespace P42Log;
 public class P42LogLevelSequence
 {
-    P42LogLevel _llAll;
-    P42LogLevel _llOff;
+    P42LogLevel? _llAll;
+    P42LogLevel? _llOff;
     
     List<P42LogLevel> _logLevels;
     public P42LogLevel CurrentLogLevel { get; set; }

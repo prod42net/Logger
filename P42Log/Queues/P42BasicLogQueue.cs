@@ -12,7 +12,7 @@ public class P42BasicLogQueue : IP42LogQueue
     P42LogLevelSequence _logLevelSequence;
     readonly List<IP42Formatter> _formatters;
     public string Name { get; set; }
-    bool _queueActive = false;
+    //bool _queueActive = false;
 
     public P42BasicLogQueue()
     {
@@ -29,7 +29,7 @@ public class P42BasicLogQueue : IP42LogQueue
 
     ~P42BasicLogQueue()
     {
-        _queueActive = false;
+        //_queueActive = false;
         _worker.Join(1000);
     }
 

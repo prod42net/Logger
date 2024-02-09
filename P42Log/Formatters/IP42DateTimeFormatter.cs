@@ -8,7 +8,7 @@ public class IP42DateTimeFormatter : IP42Formatter
     readonly bool _includeDate;
     readonly bool _includeTime;
     readonly bool _includeMilliseconds;
-    string _datetimeFrmStr;
+    string? _datetimeFrmStr;
 
     public List<IP42Formatter>? Formatters { get; set; }
 

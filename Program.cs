@@ -15,34 +15,46 @@ class Program
         Console.WriteLine("Hello, to the P42Logger");
         Stopwatch stopwatch = new Stopwatch();
         IP42Logger logger = new P42Logger();
+        
+        
+        P42NamedQueue errorQueue = 
+            new P42NamedQueue("AWS",
+                new CloudWatchDistributer("P42LGroup","ErrorStream"));
+        errorQueue.SetLogLevel(P42LogLevelNaming.Error);
+        logger.AddLogQueue(errorQueue);
+        
+        //errorQueue.AddDistributer(new P42FileDistributer("./error.log"));
+        logger.AddLogQueue(errorQueue);
+        
+        
         logger.Log("------------------------------");
-        logger.SetLogLevel("");
+        //logger.SetLogLevel("");
         WriteLogEntries(logger, 50,stopwatch);
         WriteElapsedTime(logger, stopwatch);
         
 
         logger.Log("------------------------------");
-        logger.SetLogLevel(P42LogLevelNaming.Debug);
+        //logger.SetLogLevel(P42LogLevelNaming.Debug);
         WriteLogEntries(logger, 50,stopwatch);
         WriteElapsedTime(logger, stopwatch);
         
         logger.Log("------------------------------");
-        logger.SetLogLevel(P42LogLevelNaming.Info);
+        //logger.SetLogLevel(P42LogLevelNaming.Info);
         WriteLogEntries(logger, 50,stopwatch);
         WriteElapsedTime(logger, stopwatch);
         
         logger.Log("------------------------------");
-        logger.SetLogLevel(P42LogLevelNaming.Error);
+        //logger.SetLogLevel(P42LogLevelNaming.Error);
         WriteLogEntries(logger, 50,stopwatch);
         WriteElapsedTime(logger, stopwatch);
         
         logger.Log("------------------------------");
-        logger.SetLogLevel(P42LogLevelNaming.Fatal);
+        //logger.SetLogLevel(P42LogLevelNaming.Fatal);
         WriteLogEntries(logger, 50,stopwatch);
         WriteElapsedTime(logger, stopwatch);
         
         logger.Log("------------------------------");
-        logger.SetLogLevel(P42LogLevelNaming.Off);
+        //logger.SetLogLevel(P42LogLevelNaming.Off);
         WriteLogEntries(logger, 50,stopwatch);
         WriteElapsedTime(logger, stopwatch);
 
