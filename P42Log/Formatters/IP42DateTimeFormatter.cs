@@ -32,10 +32,11 @@ public class IP42DateTimeFormatter : IP42Formatter
 
 
 
-    public string Format(string text)
+    public string Format(string logLevel, string text)
     {
         DateTime now = _useUtc ? DateTime.UtcNow : DateTime.Now;
         return $"[{now.ToString(_datetimeFrmStr)}] {text}";
     }
-    
+
+ 
 }

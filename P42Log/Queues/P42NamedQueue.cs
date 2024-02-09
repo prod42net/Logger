@@ -9,6 +9,7 @@ public class P42NamedQueue : P42BasicLogQueue
         Name = queueName;
         AddDistributer(distributer ?? new P42ConsoleDistributer());
         AddFormatter(new P42QueueFormatter(Name));
+        AddFormatter(new P42LogLevelFormatter());
         AddFormatter(new IP42DateTimeFormatter(false,true,true,true));
     }
 }

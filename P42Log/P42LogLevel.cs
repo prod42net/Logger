@@ -1,11 +1,22 @@
 namespace P42Log;
-public static class P42LogLevel
+public class P42LogLevel
 {
-    public const string Trace = "info";
-    public const string Debug = "debug";
-    public const string Info = "info";
-    public const string Warning = "warning"; 
-    public const string Error = "error";
-    public const string Fatal = "fatal"; 
-    
+    public P42LogLevel()
+    {
+        
+    }
+
+    public P42LogLevel(string name, string description = "")
+    {
+        Name = name;
+        Description = description;
+    }
+    /// <summary>
+    /// Name of the LogLevel
+    /// </summary>
+    public string Name { get; set; } = "";
+    /// <summary>
+    /// Short description if necessary 
+    /// </summary>
+    public string Description { get; set; } = "";
 }
