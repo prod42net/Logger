@@ -24,39 +24,17 @@ class Program
         logger.AddLogQueue(errorQueue);
         
         //errorQueue.AddDistributer(new P42FileDistributer("./error.log"));
-        logger.AddLogQueue(errorQueue);
+        //logger.AddLogQueue(errorQueue);
         
         
+        logger.SetLogLevel("");
         logger.Log("------------------------------");
-        //logger.SetLogLevel("");
-        WriteLogEntries(logger, 50,stopwatch);
+        IP42LogQueue awsQueue = logger.LogQueues.Find(q => q.GetType() == typeof(CloudWatchDistributer));
+        awsQueue.SetLogLevel("error");
+        WriteLogEntries(logger, 10,stopwatch);
         WriteElapsedTime(logger, stopwatch);
         
 
-        logger.Log("------------------------------");
-        //logger.SetLogLevel(P42LogLevelNaming.Debug);
-        WriteLogEntries(logger, 50,stopwatch);
-        WriteElapsedTime(logger, stopwatch);
-        
-        logger.Log("------------------------------");
-        //logger.SetLogLevel(P42LogLevelNaming.Info);
-        WriteLogEntries(logger, 50,stopwatch);
-        WriteElapsedTime(logger, stopwatch);
-        
-        logger.Log("------------------------------");
-        //logger.SetLogLevel(P42LogLevelNaming.Error);
-        WriteLogEntries(logger, 50,stopwatch);
-        WriteElapsedTime(logger, stopwatch);
-        
-        logger.Log("------------------------------");
-        //logger.SetLogLevel(P42LogLevelNaming.Fatal);
-        WriteLogEntries(logger, 50,stopwatch);
-        WriteElapsedTime(logger, stopwatch);
-        
-        logger.Log("------------------------------");
-        //logger.SetLogLevel(P42LogLevelNaming.Off);
-        WriteLogEntries(logger, 50,stopwatch);
-        WriteElapsedTime(logger, stopwatch);
 
         Console.WriteLine("Press any key to exit");
         Console.ReadKey();

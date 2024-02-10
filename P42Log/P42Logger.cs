@@ -6,6 +6,14 @@ public class P42Logger : IP42Logger
 {
     List<IP42LogQueue> _queues;
 
+    public List<IP42LogQueue> LogQueues
+    {
+        get
+        {
+            return _queues;
+        }
+    }
+
     public P42Logger(bool useDefaultQueue = true)
     {
         _queues = new List<IP42LogQueue>();
