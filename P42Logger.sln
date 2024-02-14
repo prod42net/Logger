@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P42Logger", "P42Logger\P42L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P42LoggerTestProgram", "P42LoggerTestProgram\P42LoggerTestProgram\P42LoggerTestProgram.csproj", "{1414F567-209D-41CD-8680-610FC87004AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P42LogAWSDistributer", "P42LogAWSDistributer\P42LogAWSDistributer.csproj", "{BD50A16F-17A4-4589-8083-CCB410D9F016}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{1414F567-209D-41CD-8680-610FC87004AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1414F567-209D-41CD-8680-610FC87004AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1414F567-209D-41CD-8680-610FC87004AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD50A16F-17A4-4589-8083-CCB410D9F016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD50A16F-17A4-4589-8083-CCB410D9F016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD50A16F-17A4-4589-8083-CCB410D9F016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD50A16F-17A4-4589-8083-CCB410D9F016}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

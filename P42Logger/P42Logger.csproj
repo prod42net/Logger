@@ -10,10 +10,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="AWSSDK.CloudWatchLogs" Version="3.7.304.2" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Compile Remove="P42Logger\**" />
     </ItemGroup>
 
