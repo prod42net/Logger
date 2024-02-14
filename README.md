@@ -1,19 +1,19 @@
-Just another Logger for dotnet.
+# **Just another Logger for dotnet.**
 
 Easy to use and highly extendable.
 
 Feel free to use it if you like it. 
 
-P42Logger: A Logger Library for .NET
+## P42Logger: A Logger Library for .NET
 
 The P42Logger library is a flexible and extendable logging utility designed with the .NET environment in mind. With this library, you can easily manage logging activities in your applications, control logging levels, and direct logs to different output destinations via log queues.
 
 Key Features
-Queue-Based Logging: P42Logger utilizes a queue-based system (List<IP42LogQueue>), allowing you to route logging output to different destinations easily.
+* **Queue-Based Logging**: P42Logger utilizes a queue-based system (List<IP42LogQueue>), allowing you to route logging output to different destinations easily.
 
-Flexible Logging Levels: The library lets you control the granularity of your logging by allowing you to set different logging levels.
+* **Flexible Logging Levels**: The library lets you control the granularity of your logging by allowing you to set different logging levels.
 
-Extendibility: P42Logger uses the IP42LogQueue interface, which means you can implement your own log queue classes to customize the logging process.
+* **Extendibility**: P42Logger uses the IP42LogQueue interface, which means you can implement your own log queue classes to customize the logging process.
 
 Class Overview and Usage
 
