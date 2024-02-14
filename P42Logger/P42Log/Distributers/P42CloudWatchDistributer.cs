@@ -7,12 +7,18 @@ using System;
 using System.Threading.Tasks;
 
 namespace P42Log;
+/// <summary>
+/// Represents a cloud watch log distributer that sends log messages to an Amazon CloudWatch Logs log group and log stream.
+/// </summary>
 public class CloudWatchDistributer : IP42Distributer
 {
     private readonly string _logGroupName;
     private readonly string _logStreamName;
     private AmazonCloudWatchLogsClient _client;
 
+    /// <summary>
+    /// Represents a cloud watch log distributer that sends log messages to an Amazon CloudWatch Logs log group and log stream.
+    /// </summary>
     public CloudWatchDistributer(string logGroupName, string logStreamName)
     {
         _logGroupName = logGroupName ?? throw new ArgumentNullException(nameof(logGroupName));
@@ -20,6 +26,11 @@ public class CloudWatchDistributer : IP42Distributer
         _client = new AmazonCloudWatchLogsClient(RegionEndpoint.EUWest1);
     }
 
+    /// <summary>
+    /// Sends the given text to the specified Amazon CloudWatch Logs log group and log stream.
+    /// </summary>
+    /// <param name="text">The text to send.</param>
+    /// <returns>Returns 'true' if the text was sent successfully; otherwise, 'false'.</returns>
     public bool Send(string text)
     {
         var logEvent = new InputLogEvent
@@ -28,7 +39,7 @@ public class CloudWatchDistributer : IP42Distributer
             Timestamp = DateTime.UtcNow
         };
 
-        var request = new PutLogEventsRequest(_logGroupName, _logStreamName, new List<InputLogEvent> { logEvent });
+        PutLogEventsRequest request = new PutLogEventsRequest(_logGroupName, _logStreamName, new List<InputLogEvent> { logEvent });
         Console.WriteLine(request.ToString());
         try
         {
