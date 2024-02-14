@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\P42LogAWSDistributer\P42LogAWSDistributer.csproj" />
       <ProjectReference Include="..\..\P42Logger\P42Logger.csproj" />
     </ItemGroup>
 
