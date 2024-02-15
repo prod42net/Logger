@@ -11,6 +11,7 @@
         <Authors>Jens Busch</Authors>
         <Description>This logger is a simple to use logger library. It's is extantable. Logs are queued and will be distributed in a variety of different end points. The distribution process will happen in a separate thread for as less as possible impact on the actual program. There are many loglevels pre-defined but they are also extendable. You can implement your own very specific distribution class by yourself if you want. Also can you apply 1..n format actions to any entry during logging.</Description>
         <Copyright>2024</Copyright>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageProjectUrl>www.prod42.net</PackageProjectUrl>
         <PackageIcon>prod42Net_image_head.jpg</PackageIcon>
@@ -28,6 +29,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
       <None Remove="P42Logger\**" />
       <None Update="prod42Net_image_head.jpg">
         <Pack>True</Pack>
