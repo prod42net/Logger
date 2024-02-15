@@ -3,20 +3,22 @@ using P42Log;
 using P42Log.Interfaces;
 
 namespace P42LoggerTestProgram;
-
+/// <summary>
+/// Represents the entry point class of the program.
+/// </summary>
 class Program
 {
     /// <summary>
-    /// Just a little test program for the logger functions
+    /// Executes the main function of the P42LoggerTestProgram.
     /// </summary>
-    /// <param name="args"></param>
+    /// <param name="args">Array of command-line arguments</param>
     static void Main(string[] args)
     {
         Console.WriteLine("Hello, to the P42Logger");
         Stopwatch stopwatch = new Stopwatch();
         IP42Logger logger = new P42Logger();
         
-        
+        // creating a extra error queue with a specific LogDistributer - in this case distributing logs to aws cloudwatch
         P42NamedQueue errorQueue = 
             new P42NamedQueue("AWS",
                 new CloudWatchDistributer("P42LGroup","ErrorStream"));
@@ -26,13 +28,22 @@ class Program
         //errorQueue.AddDistributer(new P42FileDistributer("./error.log"));
         //logger.AddLogQueue(errorQueue);
         
-        
+        // set log level to all
         logger.SetLogLevel("");
         logger.Log("------------------------------");
+        
+        // trying to get a specific logQueue based on type
         IP42LogQueue awsQueue = logger.LogQueues.Find(q => q.GetType() == typeof(CloudWatchDistributer));
-        awsQueue.SetLogLevel("error");
+        // setting the loglevel on a specific queue
+        if (awsQueue != null)
+        {
+            awsQueue.SetLogLevel("error");
+        }
+        
+        // just writing demo entries
         WriteLogEntries(logger, 10,stopwatch);
-        WriteElapsedTime(logger, stopwatch);
+        
+        
         
 
 
@@ -40,8 +51,15 @@ class Program
         Console.ReadKey();
     }
 
+    /// <summary>
+    /// Writes a specified number of log entries using the given logger and stopwatch.
+    /// </summary>
+    /// <param name="logger">The logger object used to write log entries</param>
+    /// <param name="repeats">The number of log entries to write</param>
+    /// <param name="watch">The stopwatch object used to measure elapsed time</param>
     static void WriteLogEntries(IP42Logger logger, int repeats,Stopwatch watch)
     {
+        // start of timer
         watch.Start();
         for (int i = 0; i < repeats; i++)
         {
@@ -53,9 +71,17 @@ class Program
             logger.Log(P42LogLevelNaming.Fatal, $"log entry [{i}] for level {P42LogLevelNaming.Fatal}");
             logger.Log(P42LogLevelNaming.All, $"log entry [{i}] for level {P42LogLevelNaming.All}");
         }
+        // stop timer
         watch.Stop();
+        // write execution time
+        WriteElapsedTime(logger, watch);
     }
 
+    /// <summary>
+    /// Writes the elapsed time in the format "HH:MM:SS.TT" to the logger.
+    /// </summary>
+    /// <param name="logger">The logger to write the elapsed time to</param>
+    /// <param name="watch">A Stopwatch instance used to measure the elapsed time</param>
     static void WriteElapsedTime(IP42Logger logger, Stopwatch watch)
     {
         TimeSpan ts = watch.Elapsed;
@@ -66,48 +92,3 @@ class Program
     }
 }
 
-
-        /*
-        for (int i = 0; i < 100; i++)
-        {
-            logger.Log(P42LogLevelNaming.Trace, $"log entry [{i}] for level {P42LogLevelNaming.Trace}");
-            logger.Log(P42LogLevelNaming.Debug, $"log entry [{i}] for level {P42LogLevelNaming.Trace}");
-            logger.Log(P42LogLevelNaming.Info, $"log entry [{i}] for level {P42LogLevelNaming.Trace}");
-            logger.Log(P42LogLevelNaming.Warning, $"log entry [{i}] for level {P42LogLevelNaming.Trace}");
-            logger.Log(P42LogLevelNaming.Error, $"log entry [{i}] for level {P42LogLevelNaming.Trace}");
-            logger.Log(P42LogLevelNaming.Fatal, $"log entry [{i}] for level {P42LogLevelNaming.Trace}");
-            logger.Log(P42LogLevelNaming.Trace, $"log entry [{i}] for level {P42LogLevelNaming.Trace}");
-            
-            _logLevelSequence.Add(new P42LogLevel(){Name = P42LogLevelNaming.Trace,Description = "Trace log information"});
-           _logLevelSequence.Add(new P42LogLevel(){Name = P42LogLevelNaming.Debug,Description = "Debug log information"});
-        }
-        
-        */
-        /*
-        logger.Log("info", "test info");
-        logger.Log("error", "test error 1");
-        logger.Log("special", "test special");
-        logger.Log("error", "test error 2");
-*/
-        /*
-        Thread.Sleep(100);
-        logger.AddLogQueue(new P42NamedQueue(P42LogLevelNaming.Debug));
-
-        logger.AddLogQueue(new P42NamedQueue(P42LogLevelNaming.Info));
-
-        // create standard console queue and in addition an error file queue
-        P42NamedQueue errorQueue = new P42NamedQueue(P42LogLevelNaming.Error);
-        errorQueue.AddDistributer(new P42FileDistributer("./error.log"));
-        logger.AddLogQueue(errorQueue);
-
-        logger.AddLogQueue(new P42NamedQueue(P42LogLevelNaming.Fatal));
-        for (int i = 0; i < 1000; i++)
-        {
-            logger.Log(P42LogLevelNaming.Debug,$"This is a debug log entry #[{i}]");
-
-        }
-        logger.Log(P42LogLevelNaming.Info,"This is a info log entry");
-        logger.Log(P42LogLevelNaming.Error,"This is a error log entry");
-        logger.Log(P42LogLevelNaming.Fatal,"This is a fatal log entry");
-
-        */
