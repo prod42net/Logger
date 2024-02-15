@@ -3,6 +3,14 @@
 Easy to use and highly extendable.
 
 Feel free to use it if you like it. 
+Just get yourself the nuget package at
+
+https://www.nuget.org/packages/Prod42Net.Logger
+
+* dotnet add package Prod42Net.Logger --version 1.0.1
+
+* NuGet\Install-Package Prod42Net.Logger -Version 1.0.1
+
 
 ## P42Logger: A Logger Library for .NET
 
