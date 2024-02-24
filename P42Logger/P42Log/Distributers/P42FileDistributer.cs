@@ -13,8 +13,13 @@ namespace P42Log
         public P42FileDistributer(string path)
         {
             _path = path;
+            String pathOnly = Path.GetDirectoryName(_path);
+            if (!string.IsNullOrEmpty(pathOnly))
+            {
+                Directory.CreateDirectory(pathOnly);
+            }
         }
-        
+
         public bool Send(string text)
         {
             try
