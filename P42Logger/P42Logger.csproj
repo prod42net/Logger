@@ -6,7 +6,7 @@
         <Nullable>enable</Nullable>
         <RootNamespace>Logger</RootNamespace>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Title>prod42Net Logger</Title>
+        <Title>Prod42Net Logger</Title>
         <PackageId>Prod42Net.Logger</PackageId>
         <Authors>Jens Busch</Authors>
         <Description>This logger is a simple to use logger library. It's is extantable. Logs are queued and will be distributed in a variety of different end points. The distribution process will happen in a separate thread for as less as possible impact on the actual program. There are many loglevels pre-defined but they are also extendable. You can implement your own very specific distribution class by yourself if you want. Also can you apply 1..n format actions to any entry during logging.</Description>
@@ -17,7 +17,8 @@
         <PackageIcon>prod42Net_image_head.jpg</PackageIcon>
         <RepositoryUrl>https://github.com/prod42net/P42Log</RepositoryUrl>
         <PackageTags>prod42 logger aws  </PackageTags>
-        <PackageReleaseNotes>initial version</PackageReleaseNotes>
+        <PackageReleaseNotes>Filelogger improvements</PackageReleaseNotes>
+        <Version>1.0.2</Version>
     </PropertyGroup>
 
     <ItemGroup>
